@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: mart_sales
+    description: "Modelo principal de ventas con joins entre órdenes, productos y clientes."
+    columns:
+      - name: order_id
+        description: "ID único de la orden"
+        tests:
+          - not_null
+      - name: product_name
+        tests:
+          - not_null
+      - name: total_price
+        tests:
+          - not_null
+
+  - name: mart_revenue_by_country
+    description: "Ingresos totales agrupados por país del cliente."
+    columns:
+      - name: customer_country
+        tests:
+          - not_null
+          - unique
+
+  - name: mart_revenue_by_product
+    description: "Ingresos totales agrupados por producto."
+    columns:
+      - name: product_name
+        tests:
+          - not_null
+          - unique
